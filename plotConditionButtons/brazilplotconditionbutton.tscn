@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://b201yk2vai1qh"]
+
+[ext_resource type="Texture2D" uid="uid://bcrw4kvh08ggp" path="res://Sprites/SPRITES.png" id="1_68tjn"]
+[ext_resource type="PackedScene" uid="uid://ceaqm5ow0scfn" path="res://simple_tool_tip.tscn" id="2_31x4r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mih1"]
+atlas = ExtResource("1_68tjn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibqe6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mih1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pr21o"]
+size = Vector2(12, 12)
+
+[node name="brazilplotconditionbutton" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ibqe6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_pr21o")
+
+[node name="SimpleToolTip" parent="." instance=ExtResource("2_31x4r")]
+z_index = 120
+position = Vector2(-19, -4)
+my_text = "Brazil Plot!
+Plot Conditions:
+💧 Water Level: High
+🌡️ Temperature: Hot
+🪨 Soil Type: Loamy
+🌿 Nutrients Level: High"
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" parent="SimpleToolTip" index="0"]
+offset_left = -11.0
+offset_right = 49.0
+
+[editable path="SimpleToolTip"]
