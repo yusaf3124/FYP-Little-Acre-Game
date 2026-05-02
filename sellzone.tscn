@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmnmq24n4psmo"]
+
+[ext_resource type="Script" uid="uid://dkrrwce84qdj1" path="res://sellzone.gd" id="1_2j3m4"]
+[ext_resource type="Texture2D" uid="uid://bgk6u728bxe5q" path="res://Sprites/spritesheet1.png" id="2_2j3m4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xonyq"]
+atlas = ExtResource("2_2j3m4")
+region = Rect2(52, 46, 52, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_njhul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xonyq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_163uk"]
+size = Vector2(31, 17)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j3m4"]
+bg_color = Color(0.5882353, 0.29411766, 0, 0.98039216)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="sellzone" type="StaticBody2D"]
+script = ExtResource("1_2j3m4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4.521739, -2.000001)
+scale = Vector2(1.2173915, 1.2173913)
+sprite_frames = SubResource("SpriteFrames_njhul")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(6.5, -3.5)
+shape = SubResource("RectangleShape2D_163uk")
+
+[node name="FeedbackUI" type="PanelContainer" parent="."]
+visible = false
+z_index = 100
+offset_left = -64.0
+offset_top = -59.0
+offset_right = 35.0
+offset_bottom = 27.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2j3m4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FeedbackUI"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="FeedbackUI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 4
+bbcode_enabled = true
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="FeedbackUI/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="FeedbackUI/VBoxContainer/Button" to="." method="_on_button_pressed"]

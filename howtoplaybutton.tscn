@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdanbo8rh0quk"]
+
+[ext_resource type="Texture2D" uid="uid://b7v3q8aafflwh" path="res://Sprites/spritesheet3.png" id="1_7rvx8"]
+[ext_resource type="PackedScene" uid="uid://ceaqm5ow0scfn" path="res://simple_tool_tip.tscn" id="2_n2yxd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rodyx"]
+atlas = ExtResource("1_7rvx8")
+region = Rect2(0, 123, 208, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibqe6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rodyx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pr21o"]
+size = Vector2(96, 33)
+
+[node name="howtoplaybutton" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ibqe6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, 0.5)
+shape = SubResource("RectangleShape2D_pr21o")
+
+[node name="SimpleToolTip" parent="." instance=ExtResource("2_n2yxd")]
+z_index = 120
+position = Vector2(-19, -4)
+my_text = "How to Play:
+• Walk around the allotment using arrow keys  
+• Click and drag seed packs across plots to plant  
+• Each plot has different growing conditions  
+• Try planting crops in different plots  
+• Matching conditions improves outcome of harvest  
+• Walk onto the pads to interact  
+• Use the sell pad to sell crops and free space  
+• Use the shop pad to buy new seed packs 
+• Use the quiz pad to learn about crops and regions  "
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" parent="SimpleToolTip" index="0"]
+offset_left = 23.0
+offset_top = 6.0
+offset_right = 134.0
+offset_bottom = 52.0
+scale = Vector2(2.9599996, 2.9599996)
+
+[editable path="SimpleToolTip"]

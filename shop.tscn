@@ -1,0 +1,78 @@
+[gd_scene load_steps=14 format=3 uid="uid://cf7i2gsb2fuwu"]
+
+[ext_resource type="Script" uid="uid://rcwnleoivcrb" path="res://shop.gd" id="1_e7rdd"]
+[ext_resource type="PackedScene" uid="uid://diemso1tm1rph" path="res://seedPacks/sugarcaneseedpack.tscn" id="3_8kdgp"]
+[ext_resource type="Texture2D" uid="uid://bgk6u728bxe5q" path="res://Sprites/spritesheet1.png" id="3_xqmyw"]
+[ext_resource type="PackedScene" uid="uid://bomeqpab45jxv" path="res://shop_menu.tscn" id="4_6lah5"]
+[ext_resource type="PackedScene" uid="uid://drwb2cutr6ggw" path="res://seedPacks/cornseedpack.tscn" id="4_myf4l"]
+[ext_resource type="PackedScene" uid="uid://bn844gc1qm5kq" path="res://seedPacks/potatoseedpack.tscn" id="5_p5a0g"]
+[ext_resource type="PackedScene" uid="uid://cu2b4cd41746i" path="res://seedPacks/hotpepperseedpack.tscn" id="6_xqmyw"]
+[ext_resource type="PackedScene" uid="uid://caju43tvcx2b1" path="res://seedPacks/wheatseedpack.tscn" id="7_p5a0g"]
+[ext_resource type="PackedScene" uid="uid://cmlca34olwy1x" path="res://seedPacks/tomatoseedpack.tscn" id="8_xqmyw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw5c6"]
+atlas = ExtResource("3_xqmyw")
+region = Rect2(0, 52, 34, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8kdgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sw5c6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myf4l"]
+size = Vector2(26, 25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p5a0g"]
+radius = 13.0
+
+[node name="shop" type="StaticBody2D"]
+script = ExtResource("1_e7rdd")
+
+[node name="shop art" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.5, -2.1764717)
+scale = Vector2(0.85294116, 0.8529412)
+sprite_frames = SubResource("SpriteFrames_8kdgp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -1.5)
+shape = SubResource("RectangleShape2D_myf4l")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, 7)
+shape = SubResource("CircleShape2D_p5a0g")
+
+[node name="tomatoseedpack" parent="." instance=ExtResource("8_xqmyw")]
+position = Vector2(59, 39)
+
+[node name="wheatseedpack" parent="." instance=ExtResource("7_p5a0g")]
+position = Vector2(42, 39)
+
+[node name="sugarcaneseedpack" parent="." instance=ExtResource("3_8kdgp")]
+position = Vector2(76, 39)
+
+[node name="cornseedpack" parent="." instance=ExtResource("4_myf4l")]
+position = Vector2(42, 58)
+
+[node name="potatoseedpack" parent="." instance=ExtResource("5_p5a0g")]
+position = Vector2(59, 58)
+
+[node name="hotpepperseedpack" parent="." instance=ExtResource("6_xqmyw")]
+position = Vector2(76, 58)
+
+[node name="shop menu" parent="." instance=ExtResource("4_6lah5")]
+z_index = 100
+offset_left = -49.0
+offset_top = -81.0
+offset_right = 71.0
+offset_bottom = -15.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

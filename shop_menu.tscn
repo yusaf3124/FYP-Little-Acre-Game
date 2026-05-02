@@ -1,0 +1,250 @@
+[gd_scene load_steps=17 format=3 uid="uid://bomeqpab45jxv"]
+
+[ext_resource type="Script" uid="uid://copqp1hbjeu21" path="res://shop_menu.gd" id="1_rh1mo"]
+[ext_resource type="Texture2D" uid="uid://d332sqre16yn1" path="res://Sprites/farmingTilesheetComplete.png" id="1_u8hot"]
+[ext_resource type="Texture2D" uid="uid://78pyevspnddu" path="res://Sprites/Pixel Gnome Crops - All.png" id="2_68nve"]
+[ext_resource type="Texture2D" uid="uid://bgk6u728bxe5q" path="res://Sprites/spritesheet1.png" id="4_xn0n2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn0n2"]
+atlas = ExtResource("2_68nve")
+region = Rect2(224, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qejid"]
+atlas = ExtResource("2_68nve")
+region = Rect2(224, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fj20"]
+atlas = ExtResource("2_68nve")
+region = Rect2(224, 128, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0atty"]
+atlas = ExtResource("2_68nve")
+region = Rect2(224, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68nve"]
+atlas = ExtResource("2_68nve")
+region = Rect2(96, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyyeu"]
+atlas = ExtResource("2_68nve")
+region = Rect2(96, 128, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xn0n2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xn0n2")
+}],
+"loop": true,
+"name": &"cornseedpack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qejid")
+}],
+"loop": true,
+"name": &"hotpepperseedpack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fj20")
+}],
+"loop": true,
+"name": &"potatoseedpack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0atty")
+}],
+"loop": true,
+"name": &"sugarcaneseedpack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68nve")
+}],
+"loop": true,
+"name": &"tomatoseedpack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyyeu")
+}],
+"loop": true,
+"name": &"wheatseedpack",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8gav"]
+atlas = ExtResource("1_u8hot")
+region = Rect2(176, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qejid"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8gav")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxocp"]
+atlas = ExtResource("1_u8hot")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eopb6"]
+atlas = ExtResource("4_xn0n2")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8fj20"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxocp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eopb6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="shop menu" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 66.0
+mouse_filter = 2
+script = ExtResource("1_rh1mo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.08461539
+anchor_top = -0.20253164
+anchor_right = -0.08461539
+anchor_bottom = -0.20253164
+offset_right = 130.0
+offset_bottom = 79.0
+color = Color(0.5882353, 0.29411766, 0, 0.98039216)
+metadata/_edit_use_anchors_ = true
+
+[node name="seedpackicon" type="AnimatedSprite2D" parent="."]
+position = Vector2(27.000002, 7)
+scale = Vector2(2.078125, 2.078125)
+sprite_frames = SubResource("SpriteFrames_xn0n2")
+animation = &"tomatoseedpack"
+
+[node name="button left" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.01679391
+anchor_top = -0.14477046
+anchor_right = -0.01679391
+anchor_bottom = -0.14477046
+offset_left = 5.0
+offset_top = 47.0
+offset_right = 27.0
+offset_bottom = 75.0
+metadata/_edit_use_anchors_ = true
+
+[node name="left button icon" type="AnimatedSprite2D" parent="."]
+position = Vector2(19.816792, 51.563133)
+rotation = 1.5707964
+scale = Vector2(2.5703917, 3.102099)
+sprite_frames = SubResource("SpriteFrames_qejid")
+
+[node name="button right" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0014093253
+anchor_top = -0.14477037
+anchor_right = -0.0014093253
+anchor_bottom = -0.14477037
+offset_left = 30.0
+offset_top = 47.0
+offset_right = 52.0
+offset_bottom = 75.0
+metadata/_edit_use_anchors_ = true
+
+[node name="right button icon" type="AnimatedSprite2D" parent="."]
+position = Vector2(34.81679, 48.563137)
+rotation = -1.5707964
+scale = Vector2(2.5703917, 3.102099)
+sprite_frames = SubResource("SpriteFrames_qejid")
+
+[node name="pricelabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.17692308
+anchor_top = -0.088607594
+anchor_right = -0.17692308
+anchor_bottom = -0.088607594
+offset_left = 60.0
+offset_top = 7.0
+offset_right = 108.0
+offset_bottom = 39.0
+theme_override_font_sizes/normal_font_size = 20
+text = "100"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="coinicon" type="AnimatedSprite2D" parent="."]
+position = Vector2(98, 15)
+scale = Vector2(1.375, 1.375)
+sprite_frames = SubResource("SpriteFrames_8fj20")
+
+[node name="buybutton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.03846154
+anchor_top = -0.101265825
+anchor_right = -0.03846154
+anchor_bottom = -0.101265825
+offset_left = 60.0
+offset_top = 38.0
+offset_right = 119.0
+offset_bottom = 66.0
+metadata/_edit_use_anchors_ = true
+
+[node name="buybuttoncolour" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.03846154
+anchor_top = -0.101265825
+anchor_right = -0.03846154
+anchor_bottom = -0.101265825
+offset_left = 60.0
+offset_top = 38.0
+offset_right = 119.0
+offset_bottom = 66.0
+mouse_filter = 2
+color = Color(0, 1, 0, 0.49019608)
+metadata/_edit_use_anchors_ = true
+
+[node name="BuyButtonText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 31.0
+offset_right = 114.0
+offset_bottom = 59.0
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="button left" to="." method="_on_button_left_pressed"]
+[connection signal="pressed" from="button right" to="." method="_on_button_right_pressed"]
+[connection signal="pressed" from="buybutton" to="." method="_on_buybutton_pressed"]

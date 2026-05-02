@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceaqm5ow0scfn"]
+
+[ext_resource type="Script" uid="uid://c7cc0qjxmkp0g" path="res://simple_tool_tip.gd" id="1_bul6h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bul6h"]
+bg_color = Color(0.5882353, 0.29411766, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="SimpleToolTip" type="Node2D"]
+visible = false
+script = ExtResource("1_bul6h")
+
+[node name="ColorRect" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(35, 0)
+offset_right = 39.0
+offset_bottom = 8.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bul6h")
+
+[node name="ToolTipText" type="Label" parent="ColorRect"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 4
+horizontal_alignment = 1
+autowrap_mode = 2
