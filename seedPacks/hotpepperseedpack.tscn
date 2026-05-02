@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu2b4cd41746i"]
+
+[ext_resource type="Script" uid="uid://d381yuf7e6gcg" path="res://seedPacks/hotpepperseedpack.gd" id="1_1o03u"]
+[ext_resource type="Texture2D" uid="uid://78pyevspnddu" path="res://Sprites/Pixel Gnome Crops - All.png" id="2_1u0kc"]
+[ext_resource type="PackedScene" uid="uid://ceaqm5ow0scfn" path="res://simple_tool_tip.tscn" id="3_nblvm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u0kc"]
+atlas = ExtResource("2_1u0kc")
+region = Rect2(224, 32, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0om7v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u0kc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pcbb0"]
+radius = 7.0
+
+[node name="hotpepperseedpack" type="StaticBody2D"]
+script = ExtResource("1_1o03u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+sprite_frames = SubResource("SpriteFrames_0om7v")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_pcbb0")
+
+[node name="SimpleToolTip" parent="." instance=ExtResource("3_nblvm")]
+position = Vector2(-19, -4)
+my_text = "Hot Pepper Seeds"
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
